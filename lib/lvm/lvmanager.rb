@@ -19,8 +19,6 @@ module LVM
     #*lvmsadc         Collect activity data
     #*lvmsar          Create activity report
     # lvreduce        Reduce the size of a logical volume
-    # lvremove        Remove logical volume(s) from the
-    #                 system
     # lvrename        Rename a logical volume
     # lvresize        Resize a logical volume
     # lvscan          List all logical volumes in
@@ -32,12 +30,24 @@ module LVM
       vgname = args[:vgname] || nil
       pvpath = args[:pvpath]
 
-      raise ArgumentError if vg.nil?
+      raise ArgumentError if vgname.nil?
 
       args.delete(:vgname)
       args.delete(:pvpath)
 
-      @lvm.cmd("lvcreate #{args_to_long_opts(args)} #{vg} #{pv}")
+      @lvm.cmd("lvcreate #{args_to_long_opts(args)} #{vgname} #{pvpath}")
+    end
+
+    def remove(args)
+      lvname = args[:name] || nil
+      vgname = args[:vgname] || nil
+
+      raise ArgumentError if (lvname.nil? or vgname.nil?)
+
+      args.delete(:name)
+      args.delete(:vgname)
+
+      @lvm.cmd("lvremove --force #{args_to_long_opts(args)} #{vgname}/#{lvname}")
     end
 
     def snapshot(args)
@@ -59,19 +69,17 @@ module LVM
       opts.join(" ")
     end
 
-    # XXX: prob lv+vgname
-    def lookup(name)
-      list.each do |lv|
-        return lv if lv.name == name
-      end
+    def lookup(lvname,vgname)
+      raw_data = @lvm.cmd("#{LVS.command} #{vgname}/#{lvname}")
+      LVS.parse(raw_data)[0]
     end
 
-    def [](name)
-      lookup(name)
+    def [](lvname,vgname)
+      lookup(lvname,vgname)
     end
 
-    def list
-      raw_data = @lvm.cmd(LVS.command)
+    def list(vgname)
+      raw_data = @lvm.cmd("#{LVS.command} #{vgname}")
       lvs = LVS.parse(raw_data)
       if block_given?
         lvs.each do |lv|

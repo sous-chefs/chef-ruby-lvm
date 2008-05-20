@@ -2,7 +2,8 @@ module LVM
   class LVS
     require 'yaml'
 
-    BASE_COMMAND = 'lvs --verbose --separator=, --noheadings --nosuffix --units=b --unbuffered --options %s,vg_uuid' 
+    BASE_COMMAND = 'lvs --verbose --separator=, --noheadings --nosuffix --units=b --unbuffered --options %s'
+    #,vg_uuid' 
     ATTRIBUTES = 'attrib/lvs.yaml'
 
     EMPTY = '-'
