@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper 
   class External
     class ExternalFailure < RuntimeError; end 
 

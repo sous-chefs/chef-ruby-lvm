@@ -1,10 +1,11 @@
 require 'lvm/proc'
 
-module LVM 
+module LVMWrapper
+  VERSION = '0.1.0'
   COMPAT_VERSION = '2.02.26-RHEL5'
 
-  class LVMWrapper
-    class LVMWrapperError < Exception; end
+  class LVM
+    class LVM < Exception; end
     
     attr_accessor :command
 

@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper 
   class PVS
     require 'yaml'
 

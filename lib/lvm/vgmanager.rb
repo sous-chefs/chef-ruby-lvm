@@ -1,7 +1,7 @@
 require 'lvm/vg'
 require 'lvm/vgs'
 
-module LVM
+module LVMWrapper
   class VolumeGroupManager
       
     def initialize(lvm)

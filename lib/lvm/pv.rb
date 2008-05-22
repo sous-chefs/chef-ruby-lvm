@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper 
   class PhysicalVolume 
     def initialize(args)
         @attributes = args

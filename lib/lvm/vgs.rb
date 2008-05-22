@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper
   class VGS
     require 'yaml'
 

@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper 
   class PhysicalVolumeSegment
     attr_reader :start, :size, :finish
 

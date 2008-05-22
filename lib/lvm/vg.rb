@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper
   class VolumeGroup
     def initialize(args)
         @attributes = args

@@ -2,7 +2,7 @@ require 'lvm/pv'
 require 'lvm/pvs'
 require 'lvm/pvseg'
 
-module LVM
+module LVMWrapper
   class PhysicalVolumeManager
       
     def initialize(lvm)

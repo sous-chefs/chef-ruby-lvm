@@ -7,9 +7,9 @@ require 'lvm/lvmanager'
 require 'lvm/pvmanager'
 require 'lvm/vgmanager'
 
-lvm = LVM::LVMWrapper.new(:command => "/usr/bin/sudo /sbin/lvm", :debug => true)
-lv = LVM::LogicalVolumeManager.new(lvm)
-vg = LVM::VolumeGroupManager.new(lvm)
+lvm = LVMWrapper::LVM.new(:command => "/usr/bin/sudo /sbin/lvm", :debug => true)
+lv = LVMWrapper::LogicalVolumeManager.new(lvm)
+vg = LVMWrapper::VolumeGroupManager.new(lvm)
 
 #vg.list.each do |v|
 #  lv.list(v.name).each do |l|

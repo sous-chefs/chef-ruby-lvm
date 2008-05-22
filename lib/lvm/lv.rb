@@ -1,4 +1,4 @@
-module LVM
+module LVMWrapper
   class LogicalVolume
     def initialize(args)
         @attributes = args

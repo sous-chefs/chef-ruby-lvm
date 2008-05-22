@@ -1,5 +1,0 @@
-not happy with this!
-
-- improve auto generation of attributes, clean it up
-- don't bother wrapping lvm create/delete etc commands, just provide a standard
-  lvm.raw('lvcreate foo'), that traps errors to do work at this level for now

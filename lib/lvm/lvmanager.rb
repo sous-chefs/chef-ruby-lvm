@@ -1,7 +1,7 @@
 require 'lvm/lv'
 require 'lvm/lvs'
 
-module LVM
+module LVMWrapper
   class LogicalVolumeManager
       
     def initialize(lvm)
