@@ -1,14 +1,24 @@
-= ruby-eql 
+= ruby-lvm
 
 * FIX (url)
 
 == DESCRIPTION:
 
-FIX (describe your package)
+This is a wrapper for the LVM2 administration utility, lvm. Its primary
+function it to convert physical volumes, logical volumes and volume groups
+into easy to use ruby objects. It also provides a simple wrapper for typical
+create/delete/etc operations.
+
+Unfortunately due to it's lack of a proper api this is as good as it gets for 
+ruby integration for the forseeable future.
+
+See this thread 
+http://www.redhat.com/archives/libvir-list/2007-March/msg00192.html for a 
+similar discussion.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* everything! don't use it yet :)
 
 == SYNOPSIS:
 
