@@ -1,7 +1,7 @@
 require 'lvm/proc'
 
 module LVMWrapper
-  VERSION = '0.1.0'
+  VERSION = '0.0.1'
   COMPAT_VERSION = '2.02.26-RHEL5'
 
   class LVM

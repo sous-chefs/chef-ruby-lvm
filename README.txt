@@ -1,6 +1,7 @@
 = ruby-lvm
 
-* FIX (url)
+* http://ruby-lvm.rubyforge.org
+* mailto:matt@bravenet.com
 
 == DESCRIPTION:
 
@@ -9,16 +10,16 @@ function it to convert physical volumes, logical volumes and volume groups
 into easy to use ruby objects. It also provides a simple wrapper for typical
 create/delete/etc operations.
 
-Unfortunately due to it's lack of a proper api this is as good as it gets for 
+Unfortunately due to it's lack of a proper api this is as good as it gets for
 ruby integration for the forseeable future.
 
-See this thread 
-http://www.redhat.com/archives/libvir-list/2007-March/msg00192.html for a 
+See this thread
+http://www.redhat.com/archives/libvir-list/2007-March/msg00192.html for a
 similar discussion.
 
 == FEATURES/PROBLEMS:
 
-* everything! don't use it yet :)
+* Not finished, is that a problem? 
 
 == SYNOPSIS:
 
@@ -26,17 +27,17 @@ similar discussion.
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* popen4 
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install ruby-lvm 
 
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2008 FIX
+Copyright (c) 2008 Matthew Kent, Bravenet Web Services Inc. 
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
