@@ -7,7 +7,7 @@ require 'lvm'
 
 Hoe.new('ruby-lvm', LVMWrapper::VERSION) do |p|
   p.developer('Matthew Kent', 'matt@bravenet.com')
-  p.extra_deps << ['popen4', '>= 0.9.6']
+  p.extra_deps << ['open4', '>= 0.9.6']
 end
 
 # vim: syntax=Ruby

@@ -1,4 +1,4 @@
-require 'lvm/proc'
+require 'lvm/external'
 
 module LVMWrapper
   VERSION = '0.0.1'
@@ -16,7 +16,7 @@ module LVMWrapper
       @debug = args[:debug] || false
     end
 
-    def raw(args)
+    def raw(args) #:nodoc:
       External.cmd(args)
     end
 
@@ -36,5 +36,4 @@ module LVMWrapper
     end # self
 
   end # class
-
 end # module

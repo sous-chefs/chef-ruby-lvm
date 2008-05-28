@@ -9,18 +9,8 @@ require 'lvm/vgmanager'
 
 lvm = LVMWrapper::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
 lv = LVMWrapper::LogicalVolumeManager.new(lvm)
-vg = LVMWrapper::VolumeGroupManager.new(lvm)
-pv = LVMWrapper::PhysicalVolumeManager.new(lvm)
 
-pv.list.each do |p|
- puts "- pv #{p.name}"
-end
+lv.remove(:vgname => "sys.vg", :name => "demo_snap")
+lv.snapshot(:origin => "sys.vg/tmp.lv", :name => "demo_snap", :size => "10k")
 
-puts ""
-
-vg.list.each do |v|
-  puts "- vg #{v.name}"
-  lv.list(v.name).each do |l|
-    puts "-- lv #{l.name}"
-  end
-end
+p lv.list("sys.vg/demo_snap")
