@@ -1,5 +1,6 @@
-=== 0.0.1 / 2008-05-22
+=== 0.0.1 / 2008-05-28
 
 * Initial release 
 
   * Birthday!
+  * Test release.

@@ -2,12 +2,16 @@ History.txt
 Manifest.txt
 README.txt
 Rakefile
+Todo.txt
+examples/create_snapshot.rb
+examples/error_handling.rb
 examples/show_volumes.rb
 helpers/generate_field_data.rb
 lib/lvm.rb
 lib/lvm/attrib/lvs.yaml
 lib/lvm/attrib/pvs.yaml
 lib/lvm/attrib/vgs.yaml
+lib/lvm/external.rb
 lib/lvm/lv.rb
 lib/lvm/lvmanager.rb
 lib/lvm/lvs.rb

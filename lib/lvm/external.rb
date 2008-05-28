@@ -6,20 +6,16 @@ module LVMWrapper
     class ExternalFailure < RuntimeError; end 
 
      class<<self
-      # Execute a command, returning the resulting String of output.
-      # Or yield each line. 
-      # 
-      # ExternalFailure on abnormal status.
+      # Execute a command, returning the resulting String of standard output.
+      #
+      # The block is optional. If given, it will be invoked for each line of
+      # output.
       def cmd(cmd)
         output = []
         error = nil
         stat = Open4::popen4(cmd) do |pid, stdin, stdout, stderr|
           while line = stdout.gets
-            if defined? yield 
-              yield line
-            else
-              output << line 
-            end
+            output << line 
           end
           error = stderr.read.strip
         end
@@ -32,7 +28,12 @@ module LVMWrapper
         elsif stat.stopped?
           raise ExternalFailure, "Fatal error, `#{cmd}` got signal #{stat.stopsig} and is stopped"
         end
-        output.join
+
+        if block_given?
+          return output.each { |l| yield l }
+        else 
+          return output.join
+        end
       end
     end
 
