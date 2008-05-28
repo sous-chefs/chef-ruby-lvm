@@ -1,6 +1,6 @@
-= to do =
+= to do
 
-== 0.1.0 ==
+== 0.1.0
 * improve auto generation of attributes, clean it up
 * don't bother wrapping lvm create/delete etc commands, too complex, just 
   provide a standard lvm.raw('lvcreate foo'), that traps errors to do work at 
