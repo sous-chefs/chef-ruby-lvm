@@ -2,6 +2,7 @@
 
 $: << File.dirname(__FILE__) + "/../lib"
 
+#require 'rubygems'
 require 'lvm'
 require 'lvm/lvmanager'
 require 'lvm/pvmanager'

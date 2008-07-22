@@ -23,15 +23,29 @@ similar discussion.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  require 'lvm'
+
+  LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
+    puts "lvm version: #{lvm.version}\n"
+
+    lvm.volume_groups.each do |vg|
+      puts "vg: #{vg.name}"
+    end
+  end
 
 == REQUIREMENTS:
 
+* ruby-lvm-attributes
 * popen4 
 
 == INSTALL:
 
 * sudo gem install ruby-lvm 
+
+== FEEDBACK:
+
+Please feel free to submit patches or constructive criticism, I'm still pretty
+new to ruby and object oriented programming in general.
 
 == LICENSE:
 

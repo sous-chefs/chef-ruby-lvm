@@ -3,14 +3,25 @@
 $: << File.dirname(__FILE__) + "/../lib"
 
 require 'lvm'
-require 'lvm/lvmanager'
-require 'lvm/pvmanager'
-require 'lvm/vgmanager'
 
-lvm = LVMWrapper::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
-lv = LVMWrapper::LogicalVolumeManager.new(lvm)
+vol = "sys.vg/tmp.lv"
+snap = "demo_snap"
 
-lv.remove(:vgname => "sys.vg", :name => "demo_snap")
-lv.snapshot(:origin => "sys.vg/tmp.lv", :name => "demo_snap", :size => "10k")
+lvm = LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"})
 
-p lv.list("sys.vg/demo_snap")
+if lvm.logical_volumes[snap]
+  puts "#{snap} exists! Remove it"
+  exit(1)
+end
+
+lvm.raw("lvcreate --snapshot --size 10M --name #{snap} #{vol}")
+lv = lvm.logical_volumes[snap]
+
+out=<<msg
+snapshot of #{vol}, #{snap}, created
+- uuid: #{lv.uuid}
+- major,minor: #{lv.kernel_major},#{lv.kernel_minor}
+msg
+puts out
+
+exit(0)
