@@ -1,9 +1,15 @@
 #!/usr/bin/ruby
 
+# Demonstration of the exception handling with raw commands. 
+
 $: << File.dirname(__FILE__) + "/../lib"
 
 require 'lvm'
 
-lvm = LVMWrapper::LVM.new(:command => "/usr/bin/sudo /sbin/lvm", :debug => true)
+lvm = LVM::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
 
-lvm.raw("--blah blah")
+begin 
+  lvm.raw("--blah blah")
+rescue LVM::External::ExternalFailure => error 
+  puts "Raw operation failed with [#{error}]"
+end

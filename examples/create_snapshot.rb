@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
 
+# Demonstration of the creation of an lvm snapshot, using sudo, and reading its
+# attributes.
+
 $: << File.dirname(__FILE__) + "/../lib"
 
 require 'lvm'
@@ -7,7 +10,7 @@ require 'lvm'
 vol = "sys.vg/tmp.lv"
 snap = "demo_snap"
 
-lvm = LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"})
+lvm = LVM::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
 
 if lvm.logical_volumes[snap]
   puts "#{snap} exists! Remove it"
@@ -23,5 +26,3 @@ snapshot of #{vol}, #{snap}, created
 - major,minor: #{lv.kernel_major},#{lv.kernel_minor}
 msg
 puts out
-
-exit(0)

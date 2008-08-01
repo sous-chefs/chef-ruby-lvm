@@ -16,7 +16,7 @@ module LVM
 
     # Gather all information about logical volumes.
     #
-    # See VolumeGroups.gather for a better representation of LVM data.
+    # See VolumeGroups.each for a better representation of LVM data.
     def each 
       lvs = @lvs.list
       lvsseg = @lvsseg.list 

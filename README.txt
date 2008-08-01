@@ -1,7 +1,7 @@
 = ruby-lvm
 
 * http://ruby-lvm.rubyforge.org
-* mailto:matt@bravenet.com
+* mailto:mkent@magoazul.com
 
 == DESCRIPTION:
 
@@ -10,16 +10,15 @@ function it to convert physical volumes, logical volumes and volume groups
 into easy to use ruby objects. It also provides a simple wrapper for typical
 create/delete/etc operations.
 
-Unfortunately due to it's lack of a proper api this is as good as it gets for
-ruby integration for the forseeable future.
-
-See this thread
-http://www.redhat.com/archives/libvir-list/2007-March/msg00192.html for a
-similar discussion.
+Due to a lack of LVM2 api this is a best effort attempt at ruby integration but
+subject to complete replacement in the future.
 
 == FEATURES/PROBLEMS:
 
-* Not finished, is that a problem? 
+* Exposes all possible data from the lvs/vgs/pvs commands. Data is grouped
+  sensibly (I hope).
+* Doesn't nicely wrap creation/deletion/etc operations, they must be created
+  by hand and passed as raw commands.
 
 == SYNOPSIS:
 

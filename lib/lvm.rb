@@ -5,6 +5,8 @@ require 'lvm/volume_groups'
 require 'lvm/physical_volumes'
 
 module LVM
+  VERSION = '0.1.1'
+
   class LVM
     attr_reader :command
     attr_reader :logical_volumes
@@ -19,14 +21,14 @@ module LVM
 
     DEFAULT_COMMAND = '/sbin/lvm'
 
-    def initialize(options)
+    def initialize(options={})
       # handy, thanks net-ssh!
       invalid_options = options.keys - VALID_OPTIONS
       if invalid_options.any?
         raise ArgumentError, "invalid option(s): #{invalid_options.join(', ')}"
       end
 
-      @command = options[:command]
+      @command = options[:command] || DEFAULT_COMMAND
 
       # default to loading attributes for the current version
       options[:version] ||= version 
@@ -76,8 +78,5 @@ module LVM
       return userland
     end
 
-#    def logical_volumes; @logical_volumes.gather; end
-#    def volume_groups; @volume_groups.gather; end
-#    def physical_volumes; @physical_volumes.gather; end
   end
 end

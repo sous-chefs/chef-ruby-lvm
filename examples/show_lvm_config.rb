@@ -1,11 +1,12 @@
 #!/usr/bin/ruby
 
+# A more advanced demonstration displaying a complete overview of the current
+# lvm configuration.
+
 $: << File.dirname(__FILE__) + "/../lib"
-$: << File.dirname(__FILE__) + "/../../ruby-lvm-attrib/lib"
 
 require 'lvm'
 
-#LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm", :version => "2.02.26"}) do |lvm|
 LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
   puts "lvm version: #{lvm.version}\n"
   
@@ -14,9 +15,12 @@ LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
   lvm.volume_groups.each do |vg|
     puts "vg: #{vg.name}"
     vg.logical_volumes.each do |lv|
-      puts "  lv: #{lv.name} #{lv.size} origin: #{lv.origin}"
+      puts "  lv: #{lv.name} #{lv.size}"
       lv.segments.each do |lvseg|
         puts "    lvseg: #{lvseg.devices} ##{lv.segments.index(lvseg)} #{lvseg.start} - #{lvseg.finish} = #{lvseg.size}"
+      end
+      if lv.snapshot?
+        puts "    snapshot origin: #{lv.origin}"
       end
     end
   end
@@ -33,9 +37,4 @@ LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
     end
   end
 
- puts lvm.volume_groups
- puts lvm.logical_volumes
- puts lvm.physical_volumes
-# puts lvm.volume_groups.entries
-#
 end

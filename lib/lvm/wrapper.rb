@@ -1,4 +1,3 @@
-$: << File.dirname(__FILE__) + "/../../../ruby-lvm-attributes/lib"
 require 'lvm/attributes'
 require 'lvm/external'
 require 'lvm/wrapper/constants'

@@ -16,7 +16,7 @@ module LVM
 
     # Gather all information about physical volumes.
     #
-    # See PhysicalVolumes.gather for a better representation of LVM data.
+    # See VolumeGroups.each for a better representation of LVM data.
     def each 
       pvs = @pvs.list
       pvsseg = @pvsseg.list 
