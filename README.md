@@ -27,6 +27,7 @@ subject to complete replacement in the future.
 
 ## SYNOPSIS:
 
+```ruby
   require 'lvm'
 
   LVM::LVM.new({:command #> "/usr/bin/sudo /sbin/lvm"}) do |lvm|
@@ -36,6 +37,7 @@ subject to complete replacement in the future.
       puts "vg: #{vg.name}"
     end
   end
+```
 
 ## REQUIREMENTS:
 
