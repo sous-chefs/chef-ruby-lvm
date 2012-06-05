@@ -30,7 +30,7 @@ subject to complete replacement in the future.
 ```ruby
   require 'lvm'
 
-  LVM::LVM.new({:command #> "/usr/bin/sudo /sbin/lvm"}) do |lvm|
+  LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
     puts "lvm version: #{lvm.version}\n"
 
     lvm.volume_groups.each do |vg|
