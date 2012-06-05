@@ -5,7 +5,7 @@ require 'lvm/volume_groups'
 require 'lvm/physical_volumes'
 
 module LVM
-  VERSION = '0.1.2'
+  VERSION = '0.1.3'
 
   class LVM
     attr_reader :command
