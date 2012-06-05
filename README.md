@@ -4,9 +4,9 @@
 * mailto:mkent@magoazul.com
 
 ## DESCRIPTION:
-This is a fork of the ruby-lvm gem found at git://rubyforge.org/ruby-lvm.git.
+This is a fork of the `ruby-lvm` gem found at `git://rubyforge.org/ruby-lvm.git`.
 The primary difference from upstream is that it depends on
-di-ruby-lvm-attributes instead of ruby-lvm-attributes. This adds support for lvm
+`di-ruby-lvm-attributes` instead of `ruby-lvm-attributes`. This adds support for lvm
 version 2.02.66(2).
 
 
@@ -39,12 +39,12 @@ subject to complete replacement in the future.
 
 ## REQUIREMENTS:
 
-* ruby-lvm-attributes
+* di-ruby-lvm-attributes
 * popen4 
 
 ## INSTALL:
 
-* sudo gem install ruby-lvm 
+* sudo gem install di-ruby-lvm 
 
 ## FEEDBACK:
 
