@@ -1,9 +1,9 @@
-= ruby-lvm
+# ruby-lvm
 
 * http://ruby-lvm.rubyforge.org
 * mailto:mkent@magoazul.com
 
-== DESCRIPTION:
+## DESCRIPTION:
 This is a fork of the ruby-lvm gem found at git://rubyforge.org/ruby-lvm.git.
 The primary difference from upstream is that it depends on
 di-ruby-lvm-attributes instead of ruby-lvm-attributes. This adds support for lvm
@@ -18,18 +18,18 @@ create/delete/etc operations.
 Due to a lack of LVM2 api this is a best effort attempt at ruby integration but
 subject to complete replacement in the future.
 
-== FEATURES/PROBLEMS:
+## FEATURES/PROBLEMS:
 
 * Exposes all possible data from the lvs/vgs/pvs commands. Data is grouped
   sensibly (I hope).
 * Doesn't nicely wrap creation/deletion/etc operations, they must be created
   by hand and passed as raw commands.
 
-== SYNOPSIS:
+## SYNOPSIS:
 
   require 'lvm'
 
-  LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
+  LVM::LVM.new({:command #> "/usr/bin/sudo /sbin/lvm"}) do |lvm|
     puts "lvm version: #{lvm.version}\n"
 
     lvm.volume_groups.each do |vg|
@@ -37,21 +37,21 @@ subject to complete replacement in the future.
     end
   end
 
-== REQUIREMENTS:
+## REQUIREMENTS:
 
 * ruby-lvm-attributes
 * popen4 
 
-== INSTALL:
+## INSTALL:
 
 * sudo gem install ruby-lvm 
 
-== FEEDBACK:
+## FEEDBACK:
 
 Please feel free to submit patches or constructive criticism, I'm still pretty
 new to ruby and object oriented programming in general.
 
-== LICENSE:
+## LICENSE:
 
 (The MIT License)
 
