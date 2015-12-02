@@ -22,16 +22,13 @@ module LVM
       pvsseg = @pvsseg.list 
 
       pvs.each do |pv|
-        pv.segments ||= []
-        pvsseg.each do |pvseg|
-          if pvseg.pv_uuid == pv.uuid 
-            pv.segments << pvseg
-          end
-        end
+        pv.segments = pvsseg.select { |seg| seg.pv_uuid == pv.uuid }
+        yield pv
       end
-
-      return pvs.each {|p| yield p}
     end
   end
 
+  def list
+    self.each { }
+  end
 end

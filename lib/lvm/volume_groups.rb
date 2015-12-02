@@ -22,35 +22,18 @@ module LVM
     # This is the best representation of LVM data.
     def each 
       vgs = @vgs.list
-      
-      lvs = Array.new
-      @lvs.each do |lv|
-        lvs << lv
-      end
-      
-      pvs = Array.new
-      @pvs.each do |pv|
-        pvs << pv
-      end
+      lvs = @lvs.list
+      pvs = @pvs.list
       
       vgs.each do |vg|
-        vg.logical_volumes ||= []
-        lvs.each do |lv|
-          if lv.vg_uuid == vg.uuid
-            vg.logical_volumes << lv
-          end
-        end
-        vg.physical_volumes ||= []
-        pvs.each do |pv|
-          if pv.vg_uuid == vg.uuid
-            vg.physical_volumes << pv
-          end
-        end
+        vg.logical_volumes  = lvs.select { |lv| lv.vg_uuid == vg.uuid }
+        vg.physical_volumes = pvs.select { |pv| pv.vg_uuid == vg.uuid }
+        yield vg
       end
-
-      return vgs.each {|v| yield v}
     end
 
+    def list
+      self.each { }
+    end
  end
-
 end
