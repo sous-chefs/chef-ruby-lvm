@@ -3,10 +3,9 @@ require 'lvm/userland'
 require 'lvm/logical_volumes'
 require 'lvm/volume_groups'
 require 'lvm/physical_volumes'
+require 'lvm/version'
 
 module LVM
-  VERSION = '0.1.3'
-
   class LVM
     attr_reader :command
     attr_reader :logical_volumes
