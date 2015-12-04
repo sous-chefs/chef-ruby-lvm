@@ -26,9 +26,9 @@ module LVM
         yield pv
       end
     end
-  end
 
-  def list
-    self.each { }
+    def list
+      self.each { }
+    end
   end
 end
