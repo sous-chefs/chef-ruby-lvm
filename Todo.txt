@@ -1,9 +1,0 @@
-= to do
-
-== 0.2.1
-* basic test suite, how?
-
-== 0.1.2
-* test on more distributions!
-* more documentation.
-* debug mode, logger?
