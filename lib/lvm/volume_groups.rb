@@ -4,7 +4,7 @@ require 'lvm/physical_volumes'
 require 'lvm/wrapper/vgs'
 
 module LVM
-  class VolumeGroups 
+  class VolumeGroups
     include Enumerable
 
     include Volumes
@@ -17,14 +17,14 @@ module LVM
     end
 
     # Gather all information about volume groups and their underlying
-    # logical and physical volumes. 
+    # logical and physical volumes.
     #
     # This is the best representation of LVM data.
-    def each 
+    def each
       vgs = @vgs.list
       lvs = @lvs.list
       pvs = @pvs.list
-      
+
       vgs.each do |vg|
         vg.logical_volumes  = lvs.select { |lv| lv.vg_uuid == vg.uuid }
         vg.physical_volumes = pvs.select { |pv| pv.vg_uuid == vg.uuid }
@@ -33,7 +33,7 @@ module LVM
     end
 
     def list
-      self.each { }
+      self.each {}
     end
  end
 end

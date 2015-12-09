@@ -4,7 +4,7 @@ require 'lvm/wrapper/constants'
 
 module LVM
   module Wrapper
-    module Reporting 
+    module Reporting
       include Constants
 
       # Breakdown return values into attribute => value hash suitable for
@@ -14,7 +14,7 @@ module LVM
         values = line.split(SEPERATOR)
         # nil is easier
         values.map! { |v| (v.empty?) ? nil : v }
-        
+
         attributes = {}
         # values and expected attributes are in the same order
         values.size.times do |i|
@@ -24,7 +24,7 @@ module LVM
           name = attribute[:method].to_sym
 
           # use hints for type conversion
-          case attribute[:type_hint] 
+          case attribute[:type_hint]
           when "String"
           when "Integer"
             value = value.to_i
@@ -43,11 +43,10 @@ module LVM
         expected_attributes.each do |a|
           opts << a[:column]
         end
-        
+
         return base % opts.join(",")
       end
       module_function :build_command
-
-    end # module Reporting 
+    end # module Reporting
   end # module Wrapper
 end # module LVM

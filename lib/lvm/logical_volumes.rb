@@ -17,18 +17,18 @@ module LVM
     # Gather all information about logical volumes.
     #
     # See VolumeGroups.each for a better representation of LVM data.
-    def each 
+    def each
       lvs = @lvs.list
-      lvsseg = @lvsseg.list 
+      lvsseg = @lvsseg.list
 
       lvs.each do |lv|
         lv.segments = lvsseg.select { |seg| seg.lv_uuid == lv.uuid }
         yield lv
-      end          
+      end
     end
 
     def list
-      self.each { }
+      self.each {}
     end
   end
 end

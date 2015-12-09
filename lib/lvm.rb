@@ -20,7 +20,7 @@ module LVM
 
     DEFAULT_COMMAND = '/sbin/lvm'
 
-    def initialize(options={})
+    def initialize(options = {})
       # handy, thanks net-ssh!
       invalid_options = options.keys - VALID_OPTIONS
       if invalid_options.any?
@@ -30,7 +30,7 @@ module LVM
       @command = options[:command] || DEFAULT_COMMAND
 
       # default to loading attributes for the current version
-      options[:version] ||= version 
+      options[:version] ||= version
       options[:debug] ||= false
 
       @logical_volumes = LogicalVolumes.new(options)
@@ -76,6 +76,5 @@ module LVM
 
       return userland
     end
-
   end
 end

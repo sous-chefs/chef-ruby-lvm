@@ -16,7 +16,7 @@ module LVM
 
       BASE_COMMAND = "lvs #{Reporting::BASE_ARGUMENTS}"
       ATTRIBUTES_FILE = 'lvs.yaml'
-  
+
       # lv_attr attribute handling constants
       # roughly by order referenced in lib/report/report.c:292 (_lvstatus_disp)
       #
@@ -39,7 +39,7 @@ module LVM
         'w' => :writeable,
         'r' => :readonly,
         # custom, from reading source
-        '-' => :locked_by_pvmove,
+        '-' => :locked_by_pvmove
       }
       ALLOCATION_POLICY = {
         'c' => :contiguous,
@@ -64,10 +64,10 @@ module LVM
         'd' => :inactive_without_table,
         'S' => :suspended_snapshot,
         'I' => :invalid_snapshot
-      } 
+      }
       DEVICE_OPEN = {
         # code says its a boolean
-        'o' => true 
+        'o' => true
       }
 
       def list
@@ -84,7 +84,7 @@ module LVM
 
         def parse_lv_attr(lv_attr) #:nodoc:
           translated = {}
-          # translate them into nice symbols and a couple booleans 
+          # translate them into nice symbols and a couple booleans
           translated[:volume_type] = VOLUME_TYPE[lv_attr[0].chr]
           translated[:permissions] = PERMISSIONS[lv_attr[1].chr]
           translated[:allocation_policy] = ALLOCATION_POLICY[lv_attr[2].chr]
@@ -94,34 +94,33 @@ module LVM
 
           return translated
         end
-  
+
         # Parses the output of self.command
         def parse(output) #:nodoc:
           volumes = []
- 
+
           output.split("\n").each do |line|
             args = Reporting.process_line(attributes, line)
 
             # now we force some types to ints since we've requested them as bytes
             # without a suffix
             args[:size] = args[:size].to_i
-  
+
             # we resolve the attributes line to nicer symbols
             args.merge!(parse_lv_attr(args[:attr]))
 
             # finally build our object
             volume = LogicalVolume.new(args)
-  
+
             if block_given?
               yield volume
             else
               volumes << volume
             end
           end
-    
+
           return volumes
         end # parse
- 
     end # class LVS
   end # module Wrapper
 end # module LVM

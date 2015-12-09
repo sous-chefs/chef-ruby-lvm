@@ -27,7 +27,7 @@ module LVM
           return data
         end
       end
-  
+
       private
 
         # Parses the output of self.command
@@ -48,12 +48,9 @@ module LVM
               volumes << volume
             end
           end
-  
+
           return volumes
         end # parse
-        
-    end # class LVSSEG 
+    end # class LVSSEG
   end # module Wrapper
-end # module LVM 
-
-
+end # module LVM

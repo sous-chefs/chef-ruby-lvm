@@ -7,9 +7,9 @@ $: << File.dirname(__FILE__) + "/../lib"
 
 require 'lvm'
 
-LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
+LVM::LVM.new({ :command => "/usr/bin/sudo /sbin/lvm" }) do |lvm|
   puts "lvm version: #{lvm.version}\n"
-  
+
   puts "\nlogical view"
   puts "------------"
   lvm.volume_groups.each do |vg|
@@ -24,9 +24,9 @@ LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
       end
     end
   end
-  
+
   puts "\nphysical view"
-  puts   "-------------"
+  puts "-------------"
   lvm.volume_groups.each do |vg|
     puts "vg: #{vg.name}"
     vg.physical_volumes.each do |pv|
@@ -36,5 +36,4 @@ LVM::LVM.new({:command => "/usr/bin/sudo /sbin/lvm"}) do |lvm|
       end
     end
   end
-
 end

@@ -17,9 +17,9 @@ module LVM
     # Gather all information about physical volumes.
     #
     # See VolumeGroups.each for a better representation of LVM data.
-    def each 
+    def each
       pvs = @pvs.list
-      pvsseg = @pvsseg.list 
+      pvsseg = @pvsseg.list
 
       pvs.each do |pv|
         pv.segments = pvsseg.select { |seg| seg.pv_uuid == pv.uuid }
@@ -28,7 +28,7 @@ module LVM
     end
 
     def list
-      self.each { }
+      self.each {}
     end
   end
 end

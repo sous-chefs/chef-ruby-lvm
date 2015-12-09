@@ -3,14 +3,14 @@ require 'open4'
 
 module LVM
   module External
-    class ExternalFailure < RuntimeError; end 
+    class ExternalFailure < RuntimeError; end
 
     def cmd(cmd)
       output = []
       error = nil
       stat = Open4.popen4(cmd) do |pid, stdin, stdout, stderr|
         while line = stdout.gets
-          output << line 
+          output << line
         end
         error = stderr.read.strip
       end
@@ -26,11 +26,10 @@ module LVM
 
       if block_given?
         return output.each { |l| yield l }
-      else 
+      else
         return output.join
       end
     end
     module_function :cmd
-
-  end # module External 
-end # module LVM 
+  end # module External
+end # module LVM

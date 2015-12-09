@@ -17,7 +17,7 @@ module LVM
 
       BASE_COMMAND = "pvs #{Reporting::BASE_ARGUMENTS}"
       ATTRIBUTES_FILE = 'pvsseg.yaml'
- 
+
       def list
         output = External.cmd(@command)
         data = parse(output)
@@ -27,7 +27,7 @@ module LVM
           return data
         end
       end
- 
+
       private
 
         # Parses the output of self.command
@@ -48,10 +48,9 @@ module LVM
               volumes << volume
             end
           end
-  
+
           return volumes
         end # parse
-        
     end # class PVSSEG
   end # module Wrapper
-end # module LVM 
+end # module LVM

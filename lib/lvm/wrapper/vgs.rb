@@ -16,17 +16,17 @@ module LVM
 
       BASE_COMMAND = "vgs #{Reporting::BASE_ARGUMENTS}"
       ATTRIBUTES_FILE = 'vgs.yaml'
-  
+
       # vg_attr attribute handling constants
       # roughly by order referenced in lib/report/report.c:360 (_vgstatus_disp)
       #
       PERMISSIONS = {
         'w' => :writeable,
-        'r' => :readonly,
+        'r' => :readonly
       }
       RESIZEABLE = {
         # code says its a boolean
-        'z' => true 
+        'z' => true
       }
       EXPORTED = {
         # code says its a boolean
@@ -67,7 +67,7 @@ module LVM
 
         def parse_vg_attr(vg_attr) #:nodoc:
           translated = {}
-          # translate them into nice symbols and a couple booleans 
+          # translate them into nice symbols and a couple booleans
           translated[:permissions] = PERMISSIONS[vg_attr[0].chr]
           translated[:resizeable] = RESIZEABLE[vg_attr[1].chr] ? true : false
           translated[:exported] = EXPORTED[vg_attr[2].chr] ? true : false
@@ -77,36 +77,33 @@ module LVM
 
           return translated
        end
-  
+
         # Parses the output of self.command
         def parse(output) #:nodoc:
           volumes = []
- 
+
           output.split("\n").each do |line|
             args = process_line(attributes, line)
 
             # now we force some types to ints since we've requested them as bytes
             # without a suffix
             args[:size] = args[:size].to_i
-  
+
             # we resolve the attributes line to nicer symbols
             args.merge!(parse_vg_attr(args[:attr]))
 
             # finally build our object
             volume = VolumeGroup.new(args)
-  
+
             if block_given?
               yield volume
             else
               volumes << volume
             end
           end
-    
+
           return volumes
         end # parse
-
     end # class VGS
   end # module Wrapper
 end # module LVM
-
-
