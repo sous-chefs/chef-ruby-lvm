@@ -3,7 +3,7 @@
 - mailto:mkent@magoazul.com
 
 ## DESCRIPTION:
-This is a fork of the ruby-lvm gem found at git://rubyforge.org/ruby-lvm.git. The primary difference from upstream is that it depends on di-ruby-lvm-attributes instead of ruby-lvm-attributes. This adds support for lvm version 2.02.66(2).
+This is a fork of the ruby-lvm gem found at git://rubyforge.org/ruby-lvm.git. The primary difference from upstream is that it depends on di-ruby-lvm-attributes instead of ruby-lvm-attributes. This adds support for lvm version 2.02.66(2) and later.
 
 This is a wrapper for the LVM2 administration utility, lvm. Its primary function it to convert physical volumes, logical volumes and volume groups into easy to use ruby objects. It also provides a simple wrapper for typical create/delete/etc operations.
 
