@@ -1,6 +1,6 @@
-require 'lvm/attributes'
-require 'lvm/external'
-require 'lvm/wrapper/constants'
+require "lvm/attributes"
+require "lvm/external"
+require "lvm/wrapper/constants"
 
 module LVM
   module Wrapper
@@ -18,7 +18,7 @@ module LVM
         attributes = {}
         # values and expected attributes are in the same order
         values.size.times do |i|
-          value  = values[i]
+          value = values[i]
           attribute = expected_attributes[i]
 
           name = attribute[:method].to_sym

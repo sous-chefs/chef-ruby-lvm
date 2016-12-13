@@ -5,7 +5,7 @@
 
 $: << File.dirname(__FILE__) + "/../lib"
 
-require 'lvm'
+require "lvm"
 
 LVM::LVM.new({ :command => "/usr/bin/sudo /sbin/lvm" }) do |lvm|
   puts "lvm version: #{lvm.version}\n"

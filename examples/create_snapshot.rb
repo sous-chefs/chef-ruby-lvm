@@ -5,7 +5,7 @@
 
 $: << File.dirname(__FILE__) + "/../lib"
 
-require 'lvm'
+require "lvm"
 
 vol = "sys.vg/tmp.lv"
 snap = "demo_snap"

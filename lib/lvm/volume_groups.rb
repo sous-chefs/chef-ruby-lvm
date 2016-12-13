@@ -1,7 +1,7 @@
-require 'lvm/volumes'
-require 'lvm/logical_volumes'
-require 'lvm/physical_volumes'
-require 'lvm/wrapper/vgs'
+require "lvm/volumes"
+require "lvm/logical_volumes"
+require "lvm/physical_volumes"
+require "lvm/wrapper/vgs"
 
 module LVM
   class VolumeGroups
@@ -35,5 +35,5 @@ module LVM
     def list
       self.each {}
     end
- end
+  end
 end

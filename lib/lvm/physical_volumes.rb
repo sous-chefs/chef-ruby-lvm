@@ -1,6 +1,6 @@
-require 'lvm/volumes'
-require 'lvm/wrapper/pvs'
-require 'lvm/wrapper/pvsseg'
+require "lvm/volumes"
+require "lvm/wrapper/pvs"
+require "lvm/wrapper/pvsseg"
 
 module LVM
   class PhysicalVolumes

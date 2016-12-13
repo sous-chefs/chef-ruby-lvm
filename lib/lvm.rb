@@ -1,9 +1,9 @@
-require 'lvm/external'
-require 'lvm/userland'
-require 'lvm/logical_volumes'
-require 'lvm/volume_groups'
-require 'lvm/physical_volumes'
-require 'lvm/version'
+require "lvm/external"
+require "lvm/userland"
+require "lvm/logical_volumes"
+require "lvm/volume_groups"
+require "lvm/physical_volumes"
+require "lvm/version"
 
 module LVM
   class LVM
@@ -15,10 +15,10 @@ module LVM
     VALID_OPTIONS = [
       :command,
       :version,
-      :debug
+      :debug,
     ]
 
-    DEFAULT_COMMAND = '/sbin/lvm'
+    DEFAULT_COMMAND = "/sbin/lvm"
 
     def initialize(options = {})
       # handy, thanks net-ssh!
@@ -63,13 +63,13 @@ module LVM
     # helper methods
     def userland
       userland = UserLand.new
-      raw('version') do |line|
+      raw("version") do |line|
         case line
-        when  %r{^\s+LVM version:\s+([0-9].*)$}
+        when %r{^\s+LVM version:\s+([0-9].*)$}
           userland.lvm_version = $1
         when %r{^\s+Library version:\s+([0-9].*)$}
           userland.library_version = $1
-        when  %r{^\s+Driver version:\s+([0-9].*)$}
+        when %r{^\s+Driver version:\s+([0-9].*)$}
           userland.driver_version = $1
         end
       end

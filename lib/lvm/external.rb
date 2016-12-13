@@ -1,5 +1,5 @@
-require 'rubygems'
-require 'open4'
+require "rubygems"
+require "open4"
 
 module LVM
   module External
