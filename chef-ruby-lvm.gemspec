@@ -3,7 +3,7 @@ require "lvm/version"
 
 deps = {
   "open4" => ["~> 0.9", ">= 0.9.6"],
-  "chef-ruby-lvm-attrib" => ["~> 0.0.28"],
+  "chef-ruby-lvm-attrib" => ["~> 0.2"],
 }
 
 Gem::Specification.new do |gem|
