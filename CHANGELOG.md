@@ -1,3 +1,7 @@
+# 0.3.0 (2016-06-21)
+
+- Depend on di-ruby-lvm-attrib ~0.2 to bring in the last few years of releases
+
 # 0.2.2 (2016-12-12)
 
 - Fork di-ruby-lvm as chef-ruby-lvm in order to unblock the Chef lvm cookbook support for the latest Linux distros
