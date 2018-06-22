@@ -11,11 +11,13 @@ module LVM
     attr_reader :logical_volumes
     attr_reader :volume_groups
     attr_reader :physical_volumes
+    attr_reader :additional_arguments
 
     VALID_OPTIONS = [
       :command,
       :version,
       :debug,
+      :additional_arguments,
     ]
 
     DEFAULT_COMMAND = "/sbin/lvm"

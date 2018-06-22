@@ -38,13 +38,16 @@ module LVM
       end
       module_function :process_line
 
-      def build_command(expected_attributes, base)
+      def build_command(expected_attributes, base, additional_arguments = [])
         opts = []
         expected_attributes.each do |a|
           opts << a[:column]
         end
 
-        return base % opts.join(",")
+        additional_arguments = [] if additional_arguments.nil?
+        additional_arguments = [additional_arguments] if additional_arguments.is_a?(String)
+
+        return base % opts.join(",") + "#{additional_arguments.empty? ? '' : ' '}#{additional_arguments.join(' ')}"
       end
       module_function :build_command
     end # module Reporting
