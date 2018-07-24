@@ -1,3 +1,7 @@
+# 0.4.0 (2018-07-23)
+
+- Added additional_arguments option that allows passing options to commands
+
 # 0.3.0 (2016-06-21)
 
 - Depend on di-ruby-lvm-attrib ~0.2 to bring in the last few years of releases
