@@ -76,7 +76,7 @@ module LVM
         end
       end
 
-      return userland
+      userland
     end
   end
 end

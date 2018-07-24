@@ -75,7 +75,7 @@ module LVM
         translated[:allocation_policy] = ALLOCATION_POLICY[vg_attr[4].chr]
         translated[:clustered] = CLUSTERED[vg_attr[5].chr] ? true : false
 
-        return translated
+        translated
       end
 
         # Parses the output of self.command
@@ -102,7 +102,7 @@ module LVM
           end
         end
 
-        return volumes
+        volumes
       end # parse
     end # class VGS
   end # module Wrapper

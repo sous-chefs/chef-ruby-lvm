@@ -47,7 +47,7 @@ module LVM
         translated[:allocatable] = ALLOCATABLE[pv_attr[0].chr] ? true : false
         translated[:exported] = EXPORTED[pv_attr[1].chr] ? true : false
 
-        return translated
+        translated
       end
 
         # Parses the output of self.command
@@ -74,7 +74,7 @@ module LVM
           end
         end
 
-        return volumes
+        volumes
       end # parse
     end # class PVS
   end # module Wrapper

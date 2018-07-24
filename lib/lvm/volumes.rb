@@ -2,13 +2,13 @@ module LVM
   module Volumes
     def [](name)
       each { |o| return o if o.name == name }
-      return nil
+      nil
     end
 
     def to_s
       x = []
       each { |o| x << o.name }
-      return x.join(" ")
+      x.join(" ")
     end
   end
 end

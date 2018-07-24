@@ -34,7 +34,7 @@ module LVM
           attributes[name] = value
         end
 
-        return attributes
+        attributes
       end
       module_function :process_line
 
@@ -47,7 +47,7 @@ module LVM
         additional_arguments = [] if additional_arguments.nil?
         additional_arguments = [additional_arguments] if additional_arguments.is_a?(String)
 
-        return base % opts.join(",") + "#{additional_arguments.empty? ? '' : ' '}#{additional_arguments.join(' ')}"
+        base % opts.join(",") + "#{additional_arguments.empty? ? '' : ' '}#{additional_arguments.join(' ')}"
       end
       module_function :build_command
     end # module Reporting

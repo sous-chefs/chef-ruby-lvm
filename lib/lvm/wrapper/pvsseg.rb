@@ -49,7 +49,7 @@ module LVM
           end
         end
 
-        return volumes
+        volumes
       end # parse
     end # class PVSSEG
   end # module Wrapper

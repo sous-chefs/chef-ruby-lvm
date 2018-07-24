@@ -92,7 +92,7 @@ module LVM
         translated[:state] = STATE[lv_attr[4].chr]
         translated[:device_open] = DEVICE_OPEN[lv_attr[5].chr] ? true : false
 
-        return translated
+        translated
       end
 
         # Parses the output of self.command
@@ -119,7 +119,7 @@ module LVM
           end
         end
 
-        return volumes
+        volumes
       end # parse
     end # class LVS
   end # module Wrapper

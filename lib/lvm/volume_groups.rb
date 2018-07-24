@@ -33,7 +33,7 @@ module LVM
     end
 
     def list
-      self.each {}
+      each {}
     end
   end
 end
