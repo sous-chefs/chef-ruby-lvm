@@ -12,7 +12,7 @@ module LVM
 
       def initialize(options)
         @attributes = Attributes.load(options[:version], ATTRIBUTES_FILE)
-        @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND)}"
+        @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND, options[:additional_arguments])}"
       end
 
       BASE_COMMAND = "lvs #{Reporting::BASE_ARGUMENTS}"
