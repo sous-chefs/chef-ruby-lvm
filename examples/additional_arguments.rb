@@ -2,7 +2,7 @@
 
 # Demonstration of passing additional arguments to the LVM object
 
-$: << File.dirname(__FILE__) + "/../lib"
+$: << __dir__ + "/../lib"
 
 require "lvm"
 

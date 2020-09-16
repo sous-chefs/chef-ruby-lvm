@@ -1,4 +1,4 @@
-require "rubygems"
+require "rubygems" unless defined?(Gem)
 require "open4"
 
 module LVM

@@ -3,7 +3,7 @@
 # A more advanced demonstration displaying a complete overview of the current
 # lvm configuration.
 
-$: << File.dirname(__FILE__) + "/../lib"
+$: << __dir__ + "/../lib"
 
 require "lvm"
 

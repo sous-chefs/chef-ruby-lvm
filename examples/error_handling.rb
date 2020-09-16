@@ -2,7 +2,7 @@
 
 # Demonstration of the exception handling with raw commands.
 
-$: << File.dirname(__FILE__) + "/../lib"
+$: << __dir__ + "/../lib"
 
 require "lvm"
 

@@ -1,6 +1,6 @@
 require "lvm/attributes"
-require "lvm/external"
-require "lvm/wrapper/constants"
+require_relative "external"
+require_relative "wrapper/constants"
 
 module LVM
   module Wrapper

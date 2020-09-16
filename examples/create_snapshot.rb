@@ -3,7 +3,7 @@
 # Demonstration of the creation of an lvm snapshot, using sudo, and reading its
 # attributes.
 
-$: << File.dirname(__FILE__) + "/../lib"
+$: << __dir__ + "/../lib"
 
 require "lvm"
 
