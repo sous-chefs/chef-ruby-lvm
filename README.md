@@ -4,7 +4,7 @@
 
 This is a fork of the chef-ruby-lvm gem found at <https://github.com/gregsymons/di-ruby-lvm>. The primary difference from upstream is that it depends on chef-ruby-lvm-attrib instead of chef-ruby-lvm-attrib. This adds support for lvm version 2.02.66(2) and later.
 
-This is a wrapper for the LVM2 administration utility, lvm. Its primary function it to convert physical volumes, logical volumes and volume groups into easy to use ruby objects. It also provides a simple wrapper for typical create/delete/etc operations.
+This is a wrapper for the LVM2 administration utility, lvm. Its primary function is to convert physical volumes, logical volumes and volume groups into easy-to-use ruby objects. It also provides a simple wrapper for typical create/delete/etc operations.
 
 Due to a lack of LVM2 api this is a best effort attempt at ruby integration but subject to complete replacement in the future.
 
