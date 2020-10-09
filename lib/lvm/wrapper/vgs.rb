@@ -1,5 +1,5 @@
-require "lvm/wrapper"
-require "lvm/volume_group"
+require_relative "../wrapper"
+require_relative "../volume_group"
 
 module LVM
   module Wrapper

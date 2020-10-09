@@ -1,9 +1,9 @@
-require "lvm/external"
-require "lvm/userland"
-require "lvm/logical_volumes"
-require "lvm/volume_groups"
-require "lvm/physical_volumes"
-require "lvm/version"
+require_relative "lvm/external"
+require_relative "lvm/userland"
+require_relative "lvm/logical_volumes"
+require_relative "lvm/volume_groups"
+require_relative "lvm/physical_volumes"
+require_relative "lvm/version"
 
 module LVM
   class LVM

@@ -1,7 +1,7 @@
-require "lvm/volumes"
-require "lvm/logical_volumes"
-require "lvm/physical_volumes"
-require "lvm/wrapper/vgs"
+require_relative "volumes"
+require_relative "logical_volumes"
+require_relative "physical_volumes"
+require_relative "wrapper/vgs"
 
 module LVM
   class VolumeGroups

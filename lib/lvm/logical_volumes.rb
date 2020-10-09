@@ -1,6 +1,6 @@
-require "lvm/volumes"
-require "lvm/wrapper/lvs"
-require "lvm/wrapper/lvsseg"
+require_relative "volumes"
+require_relative "wrapper/lvs"
+require_relative "wrapper/lvsseg"
 
 module LVM
   class LogicalVolumes
