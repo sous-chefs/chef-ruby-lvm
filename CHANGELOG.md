@@ -1,5 +1,11 @@
 # Change log
 
+## 0.4.1 (2022-04-25)
+
+- Use new minor version of chef-ruby-lvm-attrib
+- Chefstyle fixes
+- Optimize requires with require_relative & use __dir__ not __FILE__
+
 ## 0.4.0 (2018-07-23)
 
 - Added additional_arguments option that allows passing options to commands
