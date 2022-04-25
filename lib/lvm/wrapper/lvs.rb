@@ -14,8 +14,8 @@ module LVM
         @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND, options[:additional_arguments])}"
       end
 
-      BASE_COMMAND = "lvs #{Reporting::BASE_ARGUMENTS}"
-      ATTRIBUTES_FILE = "lvs.yaml"
+      BASE_COMMAND = "lvs #{Reporting::BASE_ARGUMENTS}".freeze
+      ATTRIBUTES_FILE = "lvs.yaml".freeze
 
       # lv_attr attribute handling constants
       # roughly by order referenced in lib/report/report.c:292 (_lvstatus_disp)
@@ -34,13 +34,13 @@ module LVM
         "S" => :invalid_snapshot,
         # custom, empty is a standard volume
         "-" => :normal,
-      }
+      }.freeze
       PERMISSIONS = {
         "w" => :writeable,
         "r" => :readonly,
         # custom, from reading source
         "-" => :locked_by_pvmove,
-      }
+      }.freeze
       ALLOCATION_POLICY = {
         "c" => :contiguous,
         "l" => :cling,
@@ -52,11 +52,11 @@ module LVM
         "N" => :normal_locked,
         "A" => :anywhere_locked,
         "I" => :inherited_locked,
-      }
+      }.freeze
       FIXED_MINOR = {
         # code says its a boolean
         "m" => true,
-      }
+      }.freeze
       STATE = {
         "s" => :suspended,
         "a" => :active,
@@ -64,25 +64,25 @@ module LVM
         "d" => :inactive_without_table,
         "S" => :suspended_snapshot,
         "I" => :invalid_snapshot,
-      }
+      }.freeze
       DEVICE_OPEN = {
         # code says its a boolean
         "o" => true,
-      }
+      }.freeze
 
       def list
         output = External.cmd(@command)
         data = parse(output)
         if block_given?
-          return data.each { |obj| yield obj }
+          data.each { |obj| yield obj }
         else
-          return data
+          data
         end
       end
 
       private
 
-      def parse_lv_attr(lv_attr) #:nodoc:
+      def parse_lv_attr(lv_attr) # :nodoc:
         translated = {}
         # translate them into nice symbols and a couple booleans
         translated[:volume_type] = VOLUME_TYPE[lv_attr[0].chr]
@@ -95,8 +95,8 @@ module LVM
         translated
       end
 
-        # Parses the output of self.command
-      def parse(output) #:nodoc:
+      # Parses the output of self.command
+      def parse(output) # :nodoc:
         volumes = []
 
         output.split("\n").each do |line|

@@ -14,8 +14,8 @@ module LVM
         @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND, options[:additional_arguments])}"
       end
 
-      BASE_COMMAND = "vgs #{Reporting::BASE_ARGUMENTS}"
-      ATTRIBUTES_FILE = "vgs.yaml"
+      BASE_COMMAND = "vgs #{Reporting::BASE_ARGUMENTS}".freeze
+      ATTRIBUTES_FILE = "vgs.yaml".freeze
 
       # vg_attr attribute handling constants
       # roughly by order referenced in lib/report/report.c:360 (_vgstatus_disp)
@@ -23,19 +23,19 @@ module LVM
       PERMISSIONS = {
         "w" => :writeable,
         "r" => :readonly,
-      }
+      }.freeze
       RESIZEABLE = {
         # code says its a boolean
         "z" => true,
-      }
+      }.freeze
       EXPORTED = {
         # code says its a boolean
         "x" => true,
-      }
+      }.freeze
       PARTIAL = {
         # code says its a boolean
         "p" => true,
-      }
+      }.freeze
       ALLOCATION_POLICY = {
         "c" => :contiguous,
         "l" => :cling,
@@ -47,25 +47,25 @@ module LVM
         "N" => :normal_locked,
         "A" => :anywhere_locked,
         "I" => :inherited_locked,
-      }
+      }.freeze
       CLUSTERED = {
         # code says its a boolean
         "c" => true,
-      }
+      }.freeze
 
       def list
         output = External.cmd(@command)
         data = parse(output)
         if block_given?
-          return data.each { |obj| yield obj }
+          data.each { |obj| yield obj }
         else
-          return data
+          data
         end
       end
 
       private
 
-      def parse_vg_attr(vg_attr) #:nodoc:
+      def parse_vg_attr(vg_attr) # :nodoc:
         translated = {}
         # translate them into nice symbols and a couple booleans
         translated[:permissions] = PERMISSIONS[vg_attr[0].chr]
@@ -78,8 +78,8 @@ module LVM
         translated
       end
 
-        # Parses the output of self.command
-      def parse(output) #:nodoc:
+      # Parses the output of self.command
+      def parse(output) # :nodoc:
         volumes = []
 
         output.split("\n").each do |line|

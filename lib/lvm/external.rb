@@ -9,9 +9,7 @@ module LVM
       output = []
       error = nil
       stat = Open4.popen4(cmd) do |pid, stdin, stdout, stderr|
-        while line = stdout.gets
-          output << line
-        end
+        output << line while line == stdout.gets
         error = stderr.read.strip
       end
       if stat.exited?
@@ -25,9 +23,9 @@ module LVM
       end
 
       if block_given?
-        return output.each { |l| yield l }
+        output.each { |l| yield l }
       else
-        return output.join
+        output.join
       end
     end
     module_function :cmd

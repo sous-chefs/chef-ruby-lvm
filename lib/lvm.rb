@@ -13,20 +13,20 @@ module LVM
     attr_reader :physical_volumes
     attr_reader :additional_arguments
 
-    VALID_OPTIONS = [
-      :command,
-      :version,
-      :debug,
-      :additional_arguments,
-    ]
+    VALID_OPTIONS = %i{
+      command
+      version
+      debug
+      additional_arguments
+    }.freeze
 
-    DEFAULT_COMMAND = "/sbin/lvm"
+    DEFAULT_COMMAND = "/sbin/lvm".freeze
 
     def initialize(options = {})
       # handy, thanks net-ssh!
       invalid_options = options.keys - VALID_OPTIONS
       if invalid_options.any?
-        raise ArgumentError, "invalid option(s): #{invalid_options.join(', ')}"
+        raise ArgumentError, "invalid option(s): #{invalid_options.join(", ")}"
       end
 
       @command = options[:command] || DEFAULT_COMMAND
@@ -42,7 +42,7 @@ module LVM
       if block_given?
         yield self
       else
-        return self
+        self
       end
     end
 
@@ -52,14 +52,14 @@ module LVM
         output << line
       end
       if block_given?
-        return output.each { |l| yield l }
+        output.each { |l| yield l }
       else
-        return output.join
+        output.join
       end
     end
 
     def version
-      %r{^(.*?)(-| )}.match(userland.lvm_version)[1]
+      /^(.*?)(-| )/.match(userland.lvm_version)[1]
     end
 
     # helper methods
@@ -67,11 +67,11 @@ module LVM
       userland = UserLand.new
       raw("version") do |line|
         case line
-        when %r{^\s+LVM version:\s+([0-9].*)$}
+        when /^\s+LVM version:\s+([0-9].*)$/
           userland.lvm_version = $1
-        when %r{^\s+Library version:\s+([0-9].*)$}
+        when /^\s+Library version:\s+([0-9].*)$/
           userland.library_version = $1
-        when %r{^\s+Driver version:\s+([0-9].*)$}
+        when /^\s+Driver version:\s+([0-9].*)$/
           userland.driver_version = $1
         end
       end

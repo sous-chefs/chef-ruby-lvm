@@ -7,7 +7,7 @@ $: << __dir__ + "/../lib"
 
 require "lvm"
 
-LVM::LVM.new({ :command => "/usr/bin/sudo /sbin/lvm" }) do |lvm|
+LVM::LVM.new({ command: "/usr/bin/sudo /sbin/lvm" }) do |lvm|
   puts "lvm version: #{lvm.version}\n"
 
   puts "\nlogical view"
