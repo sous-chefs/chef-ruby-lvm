@@ -9,7 +9,7 @@ module LVM
 
       # Breakdown return values into attribute => value hash suitable for
       # OpenStruct
-      def process_line(expected_attributes, line) #:nodoc:
+      def process_line(expected_attributes, line) # :nodoc:
         line.strip!
         values = line.split(SEPERATOR)
         # nil is easier
@@ -26,6 +26,7 @@ module LVM
           # use hints for type conversion
           case attribute[:type_hint]
           when "String"
+            value = value.to_s
           when "Integer"
             value = value.to_i
           when "Float"
@@ -47,7 +48,7 @@ module LVM
         additional_arguments = [] if additional_arguments.nil?
         additional_arguments = [additional_arguments] if additional_arguments.is_a?(String)
 
-        base % opts.join(",") + "#{additional_arguments.empty? ? '' : ' '}#{additional_arguments.join(' ')}"
+        base % opts.join(",") + "#{additional_arguments.empty? ? "" : " "}#{additional_arguments.join(" ")}"
       end
       module_function :build_command
     end # module Reporting

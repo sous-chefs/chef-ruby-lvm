@@ -14,8 +14,8 @@ module LVM
         @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND, options[:additional_arguments])}"
       end
 
-      BASE_COMMAND = "pvs #{Reporting::BASE_ARGUMENTS}"
-      ATTRIBUTES_FILE = "pvs.yaml"
+      BASE_COMMAND = "pvs #{Reporting::BASE_ARGUMENTS}".freeze
+      ATTRIBUTES_FILE = "pvs.yaml".freeze
 
       # pv_attr attribute handling constants
       # roughly by order referenced in lib/report/report.c:360 (_pvstatus_disp)
@@ -23,34 +23,34 @@ module LVM
       ALLOCATABLE = {
         # code says its a boolean
         "a" => true,
-      }
+      }.freeze
       EXPORTED = {
         # code says its a boolean
         "x" => true,
-      }
+      }.freeze
 
       def list
         output = External.cmd(@command)
         data = parse(output)
         if block_given?
-          return data.each { |obj| yield obj }
+          data.each { |obj| yield obj }
         else
-          return data
+          data
         end
       end
 
       private
 
-      def parse_pv_attr(pv_attr) #:nodoc:
+      def parse_pv_attr(pv_attr) # :nodoc:
         translated = {}
-          # translate them into nice symbols and a couple booleans
+        # translate them into nice symbols and a couple booleans
         translated[:allocatable] = ALLOCATABLE[pv_attr[0].chr] ? true : false
         translated[:exported] = EXPORTED[pv_attr[1].chr] ? true : false
 
         translated
       end
 
-        # Parses the output of self.command
+      # Parses the output of self.command
       def parse(output)
         volumes = []
 

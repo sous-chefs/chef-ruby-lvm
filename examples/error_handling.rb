@@ -6,7 +6,7 @@ $: << __dir__ + "/../lib"
 
 require "lvm"
 
-lvm = LVM::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
+lvm = LVM::LVM.new(command: "/usr/bin/sudo /sbin/lvm")
 
 begin
   lvm.raw("--blah blah")

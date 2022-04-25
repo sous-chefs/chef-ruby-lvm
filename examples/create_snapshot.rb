@@ -10,7 +10,7 @@ require "lvm"
 vol = "sys.vg/tmp.lv"
 snap = "demo_snap"
 
-lvm = LVM::LVM.new(:command => "/usr/bin/sudo /sbin/lvm")
+lvm = LVM::LVM.new(command: "/usr/bin/sudo /sbin/lvm")
 
 if lvm.logical_volumes[snap]
   puts "#{snap} exists! Remove it"
@@ -20,9 +20,9 @@ end
 lvm.raw("lvcreate --snapshot --size 10M --name #{snap} #{vol}")
 lv = lvm.logical_volumes[snap]
 
-out = <<msg
+out = <<MSG
 snapshot of #{vol}, #{snap}, created
 - uuid: #{lv.uuid}
 - major,minor: #{lv.kernel_major},#{lv.kernel_minor}
-msg
+MSG
 puts out

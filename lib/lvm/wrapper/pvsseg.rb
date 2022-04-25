@@ -15,22 +15,22 @@ module LVM
         @command = "#{options[:command]} #{Reporting.build_command(attributes, BASE_COMMAND, options[:additional_arguments])}"
       end
 
-      BASE_COMMAND = "pvs #{Reporting::BASE_ARGUMENTS}"
-      ATTRIBUTES_FILE = "pvsseg.yaml"
+      BASE_COMMAND = "pvs #{Reporting::BASE_ARGUMENTS}".freeze
+      ATTRIBUTES_FILE = "pvsseg.yaml".freeze
 
       def list
         output = External.cmd(@command)
         data = parse(output)
         if block_given?
-          return data.each { |obj| yield obj }
+          data.each { |obj| yield obj }
         else
-          return data
+          data
         end
       end
 
       private
 
-        # Parses the output of self.command
+      # Parses the output of self.command
       def parse(output)
         volumes = []
 
