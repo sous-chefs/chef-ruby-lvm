@@ -1,11 +1,6 @@
 $:.unshift(File.expand_path('lib', __dir__))
 require "lvm/version"
 
-deps = {
-  "open4" => ["~> 0.9", ">= 0.9.6"],
-  "chef-ruby-lvm-attrib" => ["~> 0.3"],
-}
-
 Gem::Specification.new do |gem|
   gem.authors       = ["Tim Smith", "Greg Symons", "Matthew Kent"]
   gem.email         = ["tsmith@chef.io", "mkent@magoazul.com", "gsymons@gsconsulting.biz"]
@@ -19,7 +14,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = LVM::VERSION
 
-  deps.each do |dep, constraints|
-    gem.add_runtime_dependency dep, *constraints
-  end
+  gem.add_runtime_dependency "chef-ruby-lvm-attrib", "~> 0.3"
+  gem.add_runtime_dependency "open4", "~> 0.9", ">= 0.9.6"
 end
