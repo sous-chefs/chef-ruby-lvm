@@ -1,5 +1,9 @@
 # Change log
 
+## 0.4.2
+
+- Fix undefined variable error in `LVM::External::Module`
+
 ## 0.4.1 (2022-04-25)
 
 - Use new minor version of chef-ruby-lvm-attrib
