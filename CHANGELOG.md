@@ -1,5 +1,9 @@
 # Change log
 
+## 0.4.3
+
+- Update open4 requirement
+
 ## 0.4.2
 
 - Fix undefined variable error in `LVM::External::Module`
