@@ -9,7 +9,9 @@ module LVM
       output = []
       error = nil
       stat = Open4.popen4(cmd) do |pid, stdin, stdout, stderr|
-        output << line while line == stdout.gets
+        while (line = stdout.gets)
+          output << line
+        end
         error = stderr.read.strip
       end
       if stat.exited?
